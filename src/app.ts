@@ -2,6 +2,7 @@ import express, { type Application, type Request, type Response } from "express"
 const app: Application = express()
 import { pool } from "./db/index.js";
 import { userRouter } from "./modules/users/user.route.js";
+import { userProfile } from "./modules/profile/profile.route.js";
 
 app.use(express.json())
 
@@ -24,11 +25,7 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 app.use("/api", userRouter)
-
-
-
-
-
+app.use("/api/v1/profile", userProfile)
 
 
 
